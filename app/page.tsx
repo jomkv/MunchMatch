@@ -1,5 +1,6 @@
 "use client";
 
+import { IIngredients, IRecipes } from "@/@types/recipe";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,13 +16,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import data from "@/data/recipes.json";
+import Recipes from "@/components/recipes/recipes";
 
 const formSchema = z.object({
   ingredient: z.string().min(1, "Please enter an ingredient"),
 });
 
 export default function Home() {
-  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [ingredients, setIngredients] = useState<IIngredients>([]);
+  const [recipes, setRecipes] = useState<IRecipes>([]);
+  const recipeData: IRecipes = data as IRecipes;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,6 +51,33 @@ export default function Home() {
     setIngredients(updatedIngredients);
   };
 
+  /**
+   * Returns recipes that can be made with the given ingredients.
+   * Ignores quantities, matches ingredient names as substrings (case-insensitive).
+   */
+  const findRecipesByIngredients = () => {
+    // Normalize user ingredients
+    const normalizedIngredients = ingredients.map((i) =>
+      i.trim().toLowerCase()
+    );
+
+    const recipeResults = recipeData.filter((recipe) => {
+      // Normalize recipe ingredients
+      const normalizedRecipeIngredients = recipe.Ingredients.map(
+        (ing: string) => ing.toLowerCase()
+      );
+
+      // Check if every user ingredient is present in any recipe ingredient
+      return normalizedIngredients.every((ingredient) =>
+        normalizedRecipeIngredients.some((recipeIngredient) =>
+          recipeIngredient.includes(ingredient)
+        )
+      );
+    });
+
+    setRecipes(recipeResults);
+  };
+
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center">
@@ -65,9 +97,7 @@ export default function Home() {
                     <Input placeholder="shadcn" {...field} />
                   </FormControl>
                   <FormDescription>
-                    {ingredients.map((ingredient, index) => (
-                      <p key={index}>{ingredient}</p>
-                    ))}
+                    {ingredients.map((ingredient) => ingredient)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -76,8 +106,9 @@ export default function Home() {
             <Button type="submit">Submit</Button>
           </form>
         </Form>
-        <Button>Search recipe</Button>
+        <Button onClick={findRecipesByIngredients}>Search recipe</Button>
       </div>
+      <Recipes data={recipes} />
     </div>
   );
 }
