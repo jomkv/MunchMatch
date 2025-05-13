@@ -13,3 +13,8 @@ export interface IRecipe {
   Method: IMethods;
 }
 export type IRecipes = IRecipe[];
+
+interface IRecipeState {
+  selected: IRecipe | null;
+  results: IRecipes;
+}
