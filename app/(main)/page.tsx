@@ -46,10 +46,15 @@ export default function Home() {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center">
-        <p>MunchMatch</p>
+      <div className="flex flex-col items-center justify-center w-[20%] font-bold">
+        <p className="text-5xl mb-5">MunchMatch</p>
         <IngredientForm />
-        <Button onClick={findRecipesByIngredients}>Search recipe</Button>
+        <Button
+          className="text-2xl pt-7 pb-8"
+          onClick={findRecipesByIngredients}
+        >
+          Search recipe
+        </Button>
       </div>
       <Recipes />
       <RecipeModal />
