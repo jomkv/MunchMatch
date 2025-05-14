@@ -18,3 +18,7 @@ interface IRecipeState {
   selected: IRecipe | null;
   results: IRecipes;
 }
+
+interface IIngredientState {
+  ingredients: IIngredients;
+}
