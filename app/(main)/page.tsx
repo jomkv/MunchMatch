@@ -18,6 +18,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import data from "@/data/recipes.json";
 import Recipes from "@/components/recipes/recipes";
+import { useDispatch } from "react-redux";
+import { setResults } from "@/store/recipes/recipeSlice";
+import RecipeModal from "@/components/recipes/recipeModal";
 
 const formSchema = z.object({
   ingredient: z.string().min(1, "Please enter an ingredient"),
@@ -25,8 +28,10 @@ const formSchema = z.object({
 
 export default function Home() {
   const [ingredients, setIngredients] = useState<IIngredients>([]);
-  const [recipes, setRecipes] = useState<IRecipes>([]);
+
   const recipeData: IRecipes = data as IRecipes;
+
+  const dispatch = useDispatch();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -75,7 +80,7 @@ export default function Home() {
       );
     });
 
-    setRecipes(recipeResults);
+    dispatch(setResults(recipeResults));
   };
 
   return (
@@ -108,7 +113,8 @@ export default function Home() {
         </Form>
         <Button onClick={findRecipesByIngredients}>Search recipe</Button>
       </div>
-      <Recipes data={recipes} />
+      <Recipes />
+      <RecipeModal />
     </div>
   );
 }

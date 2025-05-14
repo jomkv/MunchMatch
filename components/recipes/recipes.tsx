@@ -1,19 +1,14 @@
-import { IRecipes } from "@/@types/recipe";
 import RecipeCard from "./recipeCard";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
-type RecipesProps = {
-  data: IRecipes;
-};
+export default function Recipes() {
+  const { results } = useSelector((state: RootState) => state.recipe);
 
-export default function Recipes({ data }: RecipesProps) {
   return (
     <div className="max-h-[50vh] flex flex-col gap-3 overflow-auto p-[1rem]">
-      {data.map((recipe, index) => (
-        <RecipeCard
-          key={index}
-          title={recipe.Name}
-          description={recipe.Description}
-        />
+      {results.map((recipe, index) => (
+        <RecipeCard key={index} recipe={recipe} />
       ))}
     </div>
   );

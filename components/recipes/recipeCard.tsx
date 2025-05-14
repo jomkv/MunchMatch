@@ -1,16 +1,28 @@
+import { IRecipe } from "@/@types/recipe";
+import { selectRecipe } from "@/store/recipes/recipeSlice";
+import { useDispatch } from "react-redux";
+
 type RecipeCardProps = {
-  title: string;
-  description: string | null;
+  recipe: IRecipe;
 };
 
-export default function RecipeCard({ title, description }: RecipeCardProps) {
+export default function RecipeCard({ recipe }: RecipeCardProps) {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(selectRecipe(recipe));
+  };
+
   return (
-    <div className="w-full cursor-pointer transition-transform duration-200 hover:scale-102 p-[1rem] border-1 rounded-xs border-solid border-black">
-      <p className="font-bold">{title}</p>
+    <div
+      onClick={handleClick}
+      className="w-full cursor-pointer transition-transform duration-200 hover:scale-102 p-[1rem] border-1 rounded-xs border-solid border-black"
+    >
+      <p className="font-bold">{recipe.Name}</p>
       <p>
-        {description?.substring(
+        {recipe.Description?.substring(
           0,
-          description.length < 100 ? description.length : 100
+          recipe.Description.length < 100 ? recipe.Description.length : 100
         )}
       </p>
     </div>

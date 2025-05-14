@@ -10,7 +10,7 @@ const recipeSlice = createSlice({
   name: "recipe",
   initialState,
   reducers: {
-    selectRecipe: (state, action: PayloadAction<IRecipe>) => {
+    selectRecipe: (state, action: PayloadAction<IRecipe | null>) => {
       state.selected = action.payload;
     },
     setResults: (state, action: PayloadAction<IRecipes>) => {
