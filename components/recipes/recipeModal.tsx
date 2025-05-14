@@ -26,13 +26,15 @@ export default function RecipeModal() {
           <DialogTitle>{recipe?.Name}</DialogTitle>
           <DialogDescription>{recipe?.Description}</DialogDescription>
         </DialogHeader>
-        {recipe?.Method && recipe.Method.length > 0 && (
-          <ol className="list-decimal list-inside mt-4 space-y-2">
-            {recipe.Method.map((step, idx) => (
-              <li key={idx}>{step}</li>
-            ))}
-          </ol>
-        )}
+        <div className="overflow-auto max-h-[80vh] pr-4">
+          {recipe?.Method && recipe.Method.length > 0 && (
+            <ol className="list-decimal list-inside mt-4 space-y-2">
+              {recipe.Method.map((step, idx) => (
+                <li key={idx}>{step}</li>
+              ))}
+            </ol>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
