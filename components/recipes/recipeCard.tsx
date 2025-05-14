@@ -16,7 +16,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
   return (
     <div
       onClick={handleClick}
-      className="w-full cursor-pointer transition-transform duration-200 hover:scale-102 p-[1rem] border-1 rounded-xs border-solid border-black"
+      className="w-full cursor-pointer transition-transform duration-200 hover:scale-102 p-[1rem] border-1 rounded-xs border-solid border-black/25 hover:bg-[#f9fafb]"
     >
       <p className="font-bold">{recipe.Name}</p>
       <p>

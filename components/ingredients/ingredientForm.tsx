@@ -61,13 +61,13 @@ export default function IngredientForm() {
                   <Input
                     placeholder="Add ingredient"
                     {...field}
-                    className="pr-10 rounded-full"
+                    className="pr-10 rounded-full bg-[#f9fafb]"
                   />
                 </FormControl>
                 <Button
                   type="submit"
                   size="icon"
-                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-0 rounded-full"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6 p-0 rounded-full"
                   tabIndex={-1}
                 >
                   <Plus className="h-4 w-4" />
