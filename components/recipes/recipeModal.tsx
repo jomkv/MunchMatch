@@ -4,7 +4,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { selectRecipe } from "@/store/recipes/recipeSlice";
 import { RootState } from "@/store/store";
@@ -27,8 +26,17 @@ export default function RecipeModal() {
           <DialogDescription>{recipe?.Description}</DialogDescription>
         </DialogHeader>
         <div className="overflow-auto max-h-[80vh] pr-4">
+          <p className="font-bold text-lg mb-2">Ingredients</p>
+          {recipe?.Ingredients && recipe.Ingredients.length > 0 && (
+            <ul className="list-disc space-y-2 mb-4">
+              {recipe.Ingredients.map((ing, idx) => (
+                <li key={idx}>{ing}</li>
+              ))}
+            </ul>
+          )}
+          <p className="font-bold text-lg mb-2">Steps</p>
           {recipe?.Method && recipe.Method.length > 0 && (
-            <ol className="list-decimal list-inside mt-4 space-y-2">
+            <ol className="list-decimal list-inside space-y-2">
               {recipe.Method.map((step, idx) => (
                 <li key={idx}>{step}</li>
               ))}
