@@ -53,8 +53,8 @@ export default function Home() {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center gap-10">
-      <div className="flex flex-col items-center justify-center w-[20%] font-bold">
+    <div className="w-screen h-screen flex flex-col md:flex-row items-center justify-center gap-10">
+      <div className="flex flex-col items-center justify-center w-[90%] md:w-[20rem] font-bold">
         <p className="text-5xl mb-5">MunchMatch</p>
         <IngredientForm />
         <div className="flex gap-3">

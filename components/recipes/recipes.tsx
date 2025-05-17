@@ -1,7 +1,7 @@
 import RecipeCard from "./recipeCard";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 
 export default function Recipes() {
@@ -14,10 +14,14 @@ export default function Recipes() {
     recipe.Name.toLowerCase().includes(search.toLowerCase())
   );
 
+  useEffect(() => {
+    setSearch("");
+  }, [showResults]);
+
   if (!showResults) return null;
 
   return (
-    <div className="max-h-[50vh] flex flex-col gap-3 overflow-auto p-[1rem]">
+    <div className="max-h-[50vh] flex flex-col gap-3 overflow-auto p-[1rem] w-[90%] md:w-[40rem]">
       <Input
         type="text"
         placeholder="Search recipes..."
@@ -29,7 +33,7 @@ export default function Recipes() {
         <RecipeCard key={index} recipe={recipe} />
       ))}
       {filteredResults.length === 0 && (
-        <div className="text-gray-400 text-center">No recipes found.</div>
+        <div className="text-center">No results 😔</div>
       )}
     </div>
   );
