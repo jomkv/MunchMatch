@@ -17,6 +17,7 @@ export type IRecipes = IRecipe[];
 interface IRecipeState {
   selected: IRecipe | null;
   results: IRecipes;
+  showResults: boolean;
 }
 
 interface IIngredientState {

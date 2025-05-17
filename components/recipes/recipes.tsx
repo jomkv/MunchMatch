@@ -5,12 +5,16 @@ import { useState } from "react";
 import { Input } from "../ui/input";
 
 export default function Recipes() {
-  const { results } = useSelector((state: RootState) => state.recipe);
+  const { results, showResults } = useSelector(
+    (state: RootState) => state.recipe
+  );
   const [search, setSearch] = useState<string>("");
 
   const filteredResults = results.filter((recipe) =>
     recipe.Name.toLowerCase().includes(search.toLowerCase())
   );
+
+  if (!showResults) return null;
 
   return (
     <div className="max-h-[50vh] flex flex-col gap-3 overflow-auto p-[1rem]">
