@@ -35,9 +35,9 @@ export default function RecipeModal() {
             </ul>
           )}
           <p className="font-bold text-lg mb-2">Steps</p>
-          {recipe?.Method && recipe.Method.length > 0 && (
+          {recipe?.Methods && recipe.Methods.length > 0 && (
             <ol className="list-decimal list-inside space-y-2">
-              {recipe.Method.map((step, idx) => (
+              {recipe.Methods.map((step, idx) => (
                 <li key={idx}>{step}</li>
               ))}
             </ol>

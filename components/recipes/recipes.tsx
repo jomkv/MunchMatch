@@ -27,7 +27,7 @@ export default function Recipes() {
         placeholder="Search recipes..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="mb-3 px-3 py-2 border rounded w-full"
+        className="mb-3 px-3 py-2 h-full border rounded w-full sticky top-0 bg-white"
       />
       {filteredResults.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />

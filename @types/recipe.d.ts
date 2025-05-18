@@ -6,11 +6,12 @@ export type IMethods = IMethod[];
 
 export interface IRecipe {
   Name: string;
-  url: string;
-  Description: string | null;
+  RecipeUrl: string;
+  ImageUrl: string;
+  Description: string;
   Author: string;
   Ingredients: IIngredients;
-  Method: IMethods;
+  Methods: IMethods;
 }
 export type IRecipes = IRecipe[];
 
