@@ -4,6 +4,9 @@ export type IIngredients = IIngredient[];
 export type IMethod = string;
 export type IMethods = IMethod[];
 
+export type INutrition = string;
+export type INutritions = INutrition[];
+
 export interface IRecipe {
   Name: string;
   RecipeUrl: string;
@@ -12,6 +15,7 @@ export interface IRecipe {
   Author: string;
   Ingredients: IIngredients;
   Methods: IMethods;
+  Nutritions: INutritions;
 }
 export type IRecipes = IRecipe[];
 

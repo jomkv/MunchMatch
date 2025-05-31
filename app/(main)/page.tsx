@@ -21,7 +21,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   /**
-   * Returns recipes that can be made with the given ingredients.
+   * Searches recipes that can be made with the given ingredients.
    * Ignores quantities, matches ingredient names as substrings (case-insensitive).
    */
   const findRecipesByIngredients = () => {
