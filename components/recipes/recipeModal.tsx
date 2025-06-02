@@ -61,7 +61,7 @@ export default function RecipeModal() {
             <div className="overflow-auto max-h-[80vh] pr-4">
               <p className="font-bold text-lg mb-2">Nutritions</p>
               {recipe?.Nutritions && recipe.Nutritions.length > 0 && (
-                <ul className="list-disc space-y-2 mb-4">
+                <ul className="list-disc pl-5 space-y-2 mb-4">
                   {recipe.Nutritions.map((ing, idx) => (
                     <li key={idx}>{ing}</li>
                   ))}
@@ -73,7 +73,7 @@ export default function RecipeModal() {
             <div className="overflow-auto max-h-[80vh] pr-4">
               <p className="font-bold text-lg mb-2">Ingredients</p>
               {recipe?.Ingredients && recipe.Ingredients.length > 0 && (
-                <ul className="list-disc space-y-2 mb-4">
+                <ul className="list-disc pl-5 space-y-2 mb-4">
                   {recipe.Ingredients.map((ing, idx) => (
                     <li key={idx}>{ing}</li>
                   ))}
@@ -87,7 +87,7 @@ export default function RecipeModal() {
               {recipe?.Methods && recipe.Methods.length > 0 && (
                 <ol className="list-decimal list-inside space-y-2">
                   {recipe.Methods.map((step, idx) => (
-                    <li key={idx}>{step}</li>
+                    <li key={idx}> {step}</li>
                   ))}
                 </ol>
               )}
