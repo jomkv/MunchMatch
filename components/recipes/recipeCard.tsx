@@ -1,5 +1,6 @@
 import { IRecipe } from "@/@types/recipe";
 import { selectRecipe } from "@/store/recipes/recipeSlice";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 type RecipeCardProps = {
@@ -7,11 +8,21 @@ type RecipeCardProps = {
 };
 
 export default function RecipeCard({ recipe }: RecipeCardProps) {
+  const [description, setDescription] = useState<string>(recipe.Description);
+  const [isLong, setIsLong] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(selectRecipe(recipe));
   };
+
+  useEffect(() => {
+    if (description.length > 100) {
+      setIsLong(true);
+      setDescription(description.substring(0, 100));
+    }
+  }, [description]);
 
   return (
     <div
@@ -20,10 +31,8 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
     >
       <p className="font-bold">{recipe.Name}</p>
       <p>
-        {recipe.Description?.substring(
-          0,
-          recipe.Description.length < 100 ? recipe.Description.length : 100
-        )}
+        {description}
+        {isLong && "...."}
       </p>
     </div>
   );
