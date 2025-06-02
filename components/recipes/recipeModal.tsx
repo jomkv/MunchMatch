@@ -19,7 +19,10 @@ export default function RecipeModal() {
 
   const handleOpenChange = (open: boolean) => {
     // Reset selected recipe on modal close
-    if (!open) dispatch(selectRecipe(null));
+    if (!open) {
+      dispatch(selectRecipe(null));
+      setImgLoading(true);
+    }
   };
 
   return (
@@ -39,21 +42,19 @@ export default function RecipeModal() {
             <div className="overflow-auto max-h-[80vh] pr-4">
               <p className="font-bold text-lg mb-2">Overview</p>
 
-              {imgLoading ? (
+              <p className="text-sm mb-2">{recipe?.Description}</p>
+              {imgLoading && (
                 <div className="w-full flex items-center justify-center ">
                   <Spinner className="absolute w-full" />
                 </div>
-              ) : (
-                <>
-                  <p className="text-sm mb-2">{recipe?.Description}</p>
-                  <img
-                    src={recipe?.ImageUrl}
-                    alt={recipe?.Name}
-                    onLoad={() => setImgLoading(false)}
-                    onError={() => setImgLoading(false)}
-                  />
-                </>
               )}
+
+              <img
+                src={recipe?.ImageUrl}
+                alt={recipe?.Name}
+                onLoad={() => setImgLoading(false)}
+                onError={() => setImgLoading(false)}
+              />
             </div>
           </TabsContent>
           <TabsContent value="nutrition">
