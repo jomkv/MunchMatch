@@ -55,12 +55,12 @@ export default function Home() {
   return (
     <div className="w-screen h-screen flex flex-col md:flex-row items-center justify-center gap-10">
       <div className="flex flex-col items-center justify-center w-[90%] md:w-[20rem] font-bold">
-        <p className="text-5xl mb-5">MunchMatch</p>
+        <img className="mb-0" src="assets/logo-cropped.svg" />
         <IngredientForm />
         <div className="flex gap-3">
           {showResults && (
             <Button
-              variant="destructive"
+              variant="secondary"
               className="text-lg cursor-pointer"
               onClick={handleReset}
             >
