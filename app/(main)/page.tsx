@@ -11,8 +11,12 @@ import { RootState } from "@/store/store";
 import IngredientForm from "@/components/ingredients/ingredientForm";
 import { RotateCcw, Search } from "lucide-react";
 import { clear } from "@/store/ingredients/ingredientSlice";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Home() {
+  const [showFindError, setShowFindError] = useState<boolean>(false);
+
   const { ingredients } = useSelector((state: RootState) => state.ingredient);
   const { showResults } = useSelector((state: RootState) => state.recipe);
 
@@ -25,6 +29,14 @@ export default function Home() {
    * Ignores quantities, matches ingredient names as substrings (case-insensitive).
    */
   const findRecipesByIngredients = () => {
+    // If error, show shaker animation and dialog
+    if (ingredients.length === 0) {
+      toast("Please add at least one ingredient");
+      setShowFindError(true);
+      setTimeout(() => setShowFindError(false), 500); // Remove shake after animation
+      return;
+    }
+
     // Normalize user ingredients
     const normalizedIngredients = ingredients.map((i) =>
       i.trim().toLowerCase()
@@ -70,9 +82,10 @@ export default function Home() {
           )}
 
           <Button
-            className="text-lg cursor-pointer"
+            className={`text-lg cursor-pointer ${
+              showFindError ? "animate-shake" : ""
+            }`}
             onClick={findRecipesByIngredients}
-            disabled={ingredients.length <= 0}
           >
             <Search />
             Find recipe
