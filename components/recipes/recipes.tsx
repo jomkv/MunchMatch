@@ -21,13 +21,13 @@ export default function Recipes() {
   if (!showResults) return null;
 
   return (
-    <div className="max-h-[50vh] flex flex-col gap-3 overflow-auto p-[1rem] w-[90%] md:w-[40rem]">
+    <div className="max-h-[50vh] flex flex-col gap-3 overflow-auto p-[1rem] pt-0 w-[90%] md:w-[40rem]">
       <Input
         type="text"
         placeholder="Search recipes..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="mb-3 px-3 py-2 h-full border rounded w-full sticky top-0 bg-white"
+        className="mb-3 px-3 py-2 h-full border rounded w-full sticky top-0 bg-white z-[5]"
       />
       {filteredResults.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
