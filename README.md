@@ -12,7 +12,7 @@
     <br />
     Developed by <a href="https://github.com/jomkv">Jom</a>
     <br />
-    <a href="https://www.muchmatch-theta.vercel.app">Go to website</a>&nbsp;
+    <a href="https://munchmatch-theta.vercel.app">Go to website</a>&nbsp;
 </p>
 <br/>
 
