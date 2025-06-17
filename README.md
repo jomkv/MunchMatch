@@ -44,7 +44,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/jomkv/munchmatch.git
+git clone https://github.com/jomkv/MunchMatch.git
 cd munchmatch
 
 # Install dependencies
