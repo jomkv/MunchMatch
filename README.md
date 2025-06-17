@@ -1,6 +1,6 @@
 <h1 align="center">
   <div align="center">
-    <img alt="MuchMatch Logo" src="./app/favicon.ico" height="150px" width="auto"/>
+    <img alt="MunchMatch Logo" src="./app/favicon.ico" height="150px" width="auto"/>
   </div>
   <br/>
   MuchMatch
@@ -45,8 +45,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/jomkv/muchmatch.git
-cd muchmatch
+git clone https://github.com/jomkv/munchmatch.git
+cd munchmatch
 
 # Install dependencies
 npm install
