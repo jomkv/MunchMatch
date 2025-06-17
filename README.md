@@ -2,8 +2,7 @@
   <div align="center">
     <img alt="MunchMatch Logo" src="./app/favicon.ico" height="150px" width="auto"/>
   </div>
-  <br/>
-  MuchMatch
+  MunchMatch
 </h1>
 
 <p align="center">
